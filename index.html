@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR" x-data="app()" :class="{'dark':dark}" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Guilherme Miranda é consultor de tecnologia e mentor digital com mais de 25 anos de experiência em sites, e-commerce, aplicativos, IA e produtos digitais.">
+<meta name="keywords" content="Guilherme Miranda, consultor de tecnologia, mentor digital, desenvolvimento de sites, e-commerce, aplicativos, IA, produtos digitais, Amazon KDP, Hotmart">
+<meta name="author" content="Guilherme Miranda">
+<meta property="og:title" content="Guilherme Miranda - Consultor de Tecnologia e Mentor Digital">
+<meta property="og:description" content="Profissional sênior de tecnologia com 25+ anos de experiência, fundador de startups e mentor de executivos e empresas.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://superaplicativos.github.io/GuilhermeMiranda/">
+<meta property="og:image" content="images/fotopessoal.jpg">
+<title>Guilherme Miranda - Consultor de Tecnologia e Mentor Digital</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: { display: ['PT Sans','sans-serif'], body: ['DM Sans','sans-serif'] },
+      colors: { accent: '#FF6B2B', 'accent-light': '#FF8F5C' }
+    }
+  }
+}
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{font-family:'DM Sans',sans-serif}
+h1,h2,h3,h4,h5,h6{font-family:'PT Sans',sans-serif}
+body{transition:background-color .3s,color .3s}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E")}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#FF6B2B;border-radius:99px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+.nl{position:relative}
+.nl::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:currentColor;transition:width .22s cubic-bezier(.4,0,.2,1)}
+.nl:hover::after,.nl.on::after{width:100%}
+.nl.on{font-weight:500}
+.shimmer{position:relative;overflow:hidden}
+.shimmer::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:rgba(255,255,255,.18);transform:skewX(-20deg);transition:left .4s cubic-bezier(.4,0,.2,1)}
+.shimmer:hover::after{left:160%}
+.pf{overflow:hidden;background:#d4d4d8}
+.pf img{width:100%;height:100%;object-fit:cover;display:block}
+.card-h{transition:transform .28s cubic-bezier(.4,0,.2,1),border-color .18s}
+.card-h:hover{transform:translateY(-4px)}
+.stag{transition:border-color .18s}
+[x-cloak]{display:none!important}
+</style>
+</head>
+
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased">
+<header class="fixed inset-x-0 top-0 z-50 transition-all duration-300" :class="sc?'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5':''">
+  <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Navegação principal">
+    <a href="#hero" class="font-display font-bold text-xl tracking-tight relative z-10">
+      <span class="text-zinc-900 dark:text-white">Gui</span><span class="text-accent">lherme</span>
+    </a>
+
+    <ul class="hidden md:flex items-center gap-8 text-sm" role="list">
+      <li><a href="#services" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='services'?'on !text-zinc-900 dark:!text-white':''">Serviços</a></li>
+      <li><a href="#work" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='work'?'on !text-zinc-900 dark:!text-white':''">Cursos</a></li>
+      <li><a href="#about" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='about'?'on !text-zinc-900 dark:!text-white':''">Sobre</a></li>
+      <li><a href="#reviews" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='reviews'?'on !text-zinc-900 dark:!text-white':''">Mídia</a></li>
+      <li><a href="#contact" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='contact'?'on !text-zinc-900 dark:!text-white':''">Contato</a></li>
+    </ul>
+
+    <div class="flex items-center gap-3">
+      <button @click="dark=!dark" class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors" :aria-label="dark?'Modo claro':'Modo escuro'">
+        <svg x-show="!dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg x-show="dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+      </button>
+      <a href="https://wa.me/5511966161611?text=Ola%20Guilherme%20quero%20saber%20mais%20sobre%20seus%20servicos" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center gap-2 shimmer bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">
+        Fale Comigo
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <button @click="mm=!mm" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800" :aria-expanded="mm" aria-label="Abrir menu">
+        <svg x-show="!mm" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg x-show="mm" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div x-show="mm" x-cloak x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
+    <ul class="flex flex-col px-6 py-5 gap-4 text-sm font-medium" role="list">
+      <li><a href="#services" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Serviços</a></li>
+      <li><a href="#work" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Cursos</a></li>
+      <li><a href="#about" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Sobre</a></li>
+      <li><a href="#reviews" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Mídia</a></li>
+      <li><a href="#contact" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Contato</a></li>
+      <li class="pt-2 border-t border-zinc-100 dark:border-zinc-900">
+        <a href="https://wa.me/5511966161611?text=Ola%20Guilherme%20quero%20saber%20mais%20sobre%20seus%20servicos" target="_blank" rel="noopener noreferrer" @click="mm=false" class="inline-flex shimmer bg-accent text-white font-medium text-sm px-5 py-2.5 rounded-full">Fale Comigo</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<section id="hero" class="relative min-h-screen flex items-center pt-16 overflow-hidden">
+  <div class="absolute top-1/4 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute bottom-1/4 left-0 w-64 h-64 bg-zinc-200/50 dark:bg-zinc-800/30 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 py-24 w-full">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="reveal text-sm font-medium text-accent tracking-widest uppercase mb-4">Disponível para projetos</p>
+        <h1 class="reveal d1 font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-zinc-900 dark:text-white mb-6">
+          Guilherme <span class="text-accent">Miranda</span>
+        </h1>
+        <p class="reveal d2 text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-light leading-relaxed max-w-xl mb-10">
+          Profissional sênior de tecnologia com <strong class="font-medium text-zinc-700 dark:text-zinc-300">25+ anos de experiência</strong>, fundador de startups, mentor de executivos e empresas, com atuação em tecnologia, IA, produtos digitais e crescimento de negócios.
+        </p>
+        <div class="reveal d3 flex flex-wrap gap-4">
+          <a href="https://wa.me/5511966161611?text=Ola%20Guilherme%20quero%20saber%20mais%20sobre%20seus%20servicos" target="_blank" rel="noopener noreferrer" class="shimmer inline-flex items-center gap-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors text-sm">
+            Quero contratar sua mentoria
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="#work" class="inline-flex items-center gap-2 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors text-sm">Ver cursos e produtos</a>
+        </div>
+        <div class="reveal d4 grid grid-cols-3 gap-6 mt-14 pt-8 border-t border-zinc-100 dark:border-zinc-900">
+          <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">25+</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">anos de experiência</p></div>
+          <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">100+</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">projetos e clientes</p></div>
+          <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">70+</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">títulos publicados</p></div>
+        </div>
+      </div>
+
+      <div class="reveal d2 flex justify-center md:justify-end">
+        <div class="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
+          <div class="pf w-full h-full rounded-3xl">
+            <img src="images/fotopessoal.jpg" alt="Guilherme Miranda" loading="eager">
+          </div>
+          <div class="absolute -bottom-4 -left-4 bg-accent text-white font-display font-bold text-sm px-4 py-2.5 rounded-2xl shadow-lg">Mentoria, tecnologia e IA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14">
+      <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Serviços</p>
+      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Soluções para negócios, marcas e especialistas</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <article class="reveal d1 card-h group bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="w-12 h-12 flex items-center justify-center bg-orange-50 dark:bg-zinc-800 rounded-xl mb-6 group-hover:bg-accent/10 transition-colors">
+          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Desenvolvimento de Sites e E-commerce</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Projetos sob medida para presença digital, vendas online e posicionamento profissional, com foco em performance, conversão e escalabilidade.</p>
+      </article>
+
+      <article class="reveal d2 card-h group bg-zinc-900 dark:bg-zinc-800 rounded-2xl p-8 border border-zinc-800 hover:border-accent">
+        <div class="w-12 h-12 flex items-center justify-center bg-zinc-800 dark:bg-zinc-700 rounded-xl mb-6 group-hover:bg-accent/20 transition-colors">
+          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-white mb-3">Desenvolvimento de Aplicativos mobile e web</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed">Criação de plataformas, apps e sistemas digitais com visão técnica e comercial, conectando produto, experiência do usuário e resultado de negócio.</p>
+      </article>
+
+      <article class="reveal d3 card-h group bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="w-12 h-12 flex items-center justify-center bg-orange-50 dark:bg-zinc-800 rounded-xl mb-6 group-hover:bg-accent/10 transition-colors">
+          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Mentoria de Tecnologia</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Mentoria em tecnologia web, IA e produção de vídeos com IA para executivos, empresas e especialistas. Escritórios em Ribeirão Preto e São Paulo, com disponibilidade mundial.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14">
+      <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Cursos e produtos digitais</p>
+      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Conhecimento aplicado para gerar resultado</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <article class="card-h reveal d1 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="pf w-full h-64">
+          <img src="images/cursoderendarecorrenteemdolar.png" alt="Curso Renda Recorrente em Dólar" loading="lazy">
+        </div>
+        <div class="p-7">
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full">Amazon KDP</span>
+            <span class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">IA aplicada</span>
+          </div>
+          <h3 class="font-display font-bold text-2xl text-zinc-900 dark:text-white mb-2">Renda Recorrente em Dólar</h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">Aprenda a publicar livros na Amazon com apoio de IA e construir uma operação editorial digital com alcance internacional.</p>
+          <a href="https://pay.hotmart.com/A105557892A" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nl">Acessar curso <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+        </div>
+      </article>
+
+      <article class="card-h reveal d2 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="pf w-full h-64">
+          <img src="images/imagemcursoproducaodevideoscomiausandoflowegemini.png" alt="Curso Produção de Anúncios e Vídeos com IA" loading="lazy">
+        </div>
+        <div class="p-7">
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full">Vídeos com IA</span>
+            <span class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Flow + Gemini</span>
+          </div>
+          <h3 class="font-display font-bold text-2xl text-zinc-900 dark:text-white mb-2">Produção de Anúncios e Vídeos com IA</h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">Estruture anúncios e vídeos com inteligência artificial para acelerar produção, criatividade e escala de conteúdo.</p>
+          <a href="https://pay.hotmart.com/R106352724T" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nl">Acessar curso <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+        </div>
+      </article>
+
+      <article class="card-h reveal d3 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="pf w-full h-64">
+          <img src="images/imagemcursoproducaodevideosimobiliarioscomia.png" alt="Curso Produção de Vídeos Imobiliários com IA" loading="lazy">
+        </div>
+        <div class="p-7">
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full">Mercado imobiliário</span>
+            <span class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Vídeos com IA</span>
+          </div>
+          <h3 class="font-display font-bold text-2xl text-zinc-900 dark:text-white mb-2">Produção de Vídeos Imobiliários com IA</h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">Crie vídeos imobiliários com mais velocidade e impacto visual usando IA aplicada à apresentação de imóveis e empreendimentos.</p>
+          <a href="https://pay.hotmart.com/R106352724T" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nl">Acessar curso <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+        </div>
+      </article>
+
+      <article class="card-h reveal d4 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="pf w-full h-64">
+          <img src="images/cursoproducaoarquitetosdesigners.jpg" alt="Curso Produção de Conteúdo para Arquitetos com IA" loading="lazy">
+        </div>
+        <div class="p-7">
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full">Arquitetura</span>
+            <span class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Conteúdo com IA</span>
+          </div>
+          <h3 class="font-display font-bold text-2xl text-zinc-900 dark:text-white mb-2">Produção de Conteúdo para Arquitetos com IA</h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">Estratégias e fluxos para produzir conteúdo visual e editorial com IA voltado a arquitetos, designers e profissionais criativos.</p>
+          <a href="#" class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nl">Em breve <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-12 items-start">
+      <div>
+        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Sobre</p>
+        <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white mb-6">Tecnologia, negócios e execução com visão de longo prazo</h2>
+        <div class="reveal d2 space-y-5 text-zinc-500 dark:text-zinc-400 leading-relaxed">
+          <p>Com mais de 25 anos em tecnologia, Guilherme Miranda reúne perfil técnico e comercial para estruturar produtos, operações digitais e estratégias de crescimento. Sua trajetória inclui desenvolvimento, liderança, vendas, posicionamento e mentoria para empresas e executivos.</p>
+          <p>Foi fundador de startups que faturaram milhões e atendeu, de forma discreta, grandes redes, multinacionais e empresários de destaque nacional. Atua com escritórios em Ribeirão Preto e São Paulo, além de projetos com alcance nacional e internacional.</p>
+          <p>É fundador da Mobiler, com presença em veículos e programas como Exame, Globo, SBT, Jovem Pan e Sebrae, além de iniciativas como InovAtiva, SP Global, China Brazil Innovation Week, Get in the Ring e Web Summit Portugal. Também acumula reconhecimentos como 1º lugar na Deloitte e participação no Vai Tec.</p>
+          <p>Na frente editorial, mantém catálogo ativo na Amazon, com produção digital orientada a escala, monetização e presença global. Inglês fluente em nível B2.</p>
+        </div>
+        <div class="reveal d3 flex flex-wrap gap-3 mt-8">
+          <span class="stag text-sm border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full">React</span>
+          <span class="stag text-sm border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full">Node.js</span>
+          <span class="stag text-sm border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full">E-commerce</span>
+          <span class="stag text-sm border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full">IA/AI Tools</span>
+          <span class="stag text-sm border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full">CapCut</span>
+          <span class="stag text-sm border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full">Produção de Vídeo</span>
+          <span class="stag text-sm border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full">Marketing Digital</span>
+          <span class="stag text-sm border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full">Amazon KDP</span>
+          <span class="stag text-sm border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-full">Hotmart</span>
+        </div>
+      </div>
+
+      <div class="reveal d3 bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-100 dark:border-zinc-800 p-8">
+        <p class="text-xs font-medium text-accent tracking-widest uppercase mb-4">Destaques</p>
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-2">Startups e inovação</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Experiência prática na criação, aceleração e posicionamento de startups com exposição nacional e internacional.</p>
+          </div>
+          <div>
+            <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-2">Mentoria executiva</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Apoio estratégico para tomada de decisão em tecnologia, IA, produtos digitais e produção de conteúdo.</p>
+          </div>
+          <div>
+            <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-2">Editorial e produtos digitais</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Autor com catálogo ativo na Amazon e atuação em cursos, mentorias e ativos digitais escaláveis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14">
+      <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Onde já estive</p>
+      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Na mídia, em programas e ecossistemas de inovação</h2>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <article class="reveal d1 card-h bg-white dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800">
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Mídia nacional</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Menções e presença em Exame, Globo, SBT, Jovem Pan e Sebrae.</p>
+      </article>
+      <article class="reveal d2 card-h bg-white dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800">
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Programas de inovação</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Participação em InovAtiva, SP Global, China Brazil Innovation Week e Get in the Ring.</p>
+      </article>
+      <article class="reveal d3 card-h bg-white dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800">
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Reconhecimento</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">1º lugar na Deloitte e trajetória conectada a iniciativas como Vai Tec.</p>
+      </article>
+      <article class="reveal d4 card-h bg-white dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800">
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Presença global</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Participação em eventos e conexões internacionais, incluindo Web Summit Portugal.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="blog" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14">
+      <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Livros e editorial</p>
+      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Autor com presença internacional</h2>
+    </div>
+
+    <article class="reveal d2 card-h group bg-white dark:bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+      <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-0">
+        <div class="p-8 md:p-10">
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full">Amazon Author</span>
+            <span class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Editorial digital</span>
+          </div>
+          <h3 class="font-display font-bold text-3xl text-zinc-900 dark:text-white mb-4">70+ títulos em 5 idiomas vendendo em 100+ países</h3>
+          <p class="text-sm md:text-base text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6">Guilherme Miranda mantém catálogo ativo na Amazon com foco em produção editorial escalável, monetização internacional e construção de ativos digitais de longo prazo.</p>
+          <a href="https://www.amazon.com.br/stores/author/B0DGDMZ4KC/allbooks" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 shimmer bg-accent text-white text-sm font-medium px-6 py-3 rounded-full hover:bg-accent-light transition-colors">
+            Ver catálogo na Amazon
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+        <div class="bg-zinc-900 dark:bg-zinc-800 p-8 md:p-10 flex items-center">
+          <div class="space-y-4">
+            <p class="text-sm uppercase tracking-[0.2em] text-accent">Editorial</p>
+            <p class="text-zinc-300 leading-relaxed">Catálogo ativo, distribuição global, produção com apoio de IA e estratégia de posicionamento para nichos digitais.</p>
+            <a href="https://www.amazon.com.br/stores/author/B0DGDMZ4KC/allbooks" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-white font-medium nl">Acessar página do autor</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="contact" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="bg-zinc-900 dark:bg-zinc-800 rounded-3xl p-10 md:p-16 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute bottom-0 left-0 w-40 h-40 bg-accent/10 rounded-full blur-2xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative z-10 grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Contato</p>
+          <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-white leading-tight mb-5">Vamos conversar sobre seu próximo projeto</h2>
+          <p class="reveal d2 text-zinc-400 leading-relaxed mb-8">Se você busca mentoria, desenvolvimento de soluções digitais, IA aplicada ou posicionamento estratégico, fale diretamente pelo WhatsApp.</p>
+
+          <div class="reveal d3 flex flex-col gap-4">
+            <a href="https://wa.me/5511966161611?text=Ola%20Guilherme%20quero%20saber%20mais%20sobre%20seus%20servicos" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
+              <span class="w-9 h-9 flex items-center justify-center bg-zinc-800 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0012.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.96L0 24l6.31-1.65a11.9 11.9 0 005.75 1.47h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.44zM12.07 21.8h-.01a9.9 9.9 0 01-5.04-1.38l-.36-.21-3.75.98 1-3.66-.24-.38a9.87 9.87 0 01-1.52-5.25c0-5.46 4.45-9.9 9.92-9.9 2.65 0 5.14 1.03 7.01 2.91a9.84 9.84 0 012.9 7c0 5.47-4.45 9.91-9.91 9.91zm5.43-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.8-1.68-2.1-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.08-.8.37-.27.3-1.05 1.02-1.05 2.48 0 1.47 1.08 2.88 1.23 3.08.15.2 2.12 3.24 5.13 4.54.72.31 1.28.5 1.72.64.72.23 1.37.2 1.88.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg>
+              </span>
+              <span class="text-sm">WhatsApp: +55 11 96616-1611</span>
+            </a>
+            <a href="https://github.com/superaplicativos" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
+              <span class="w-9 h-9 flex items-center justify-center bg-zinc-800 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577v-2.234C5.662 21.3 4.967 19.158 4.967 19.158c-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.333-5.467-5.931 0-1.311.469-2.382 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.52 11.52 0 0112 6.844c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.119 3.176.77.839 1.234 1.91 1.234 3.221 0 4.609-2.807 5.625-5.479 5.921.43.372.823 1.103.823 2.222v3.293c0 .319.192.694.801.576C20.565 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              </span>
+              <span class="text-sm">github.com/superaplicativos</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal d2 bg-white/5 border border-white/10 rounded-3xl p-8">
+          <p class="text-xs font-medium text-accent tracking-widest uppercase mb-3">CTA principal</p>
+          <h3 class="font-display font-bold text-3xl text-white mb-4">Quero contratar sua mentoria</h3>
+          <p class="text-zinc-400 leading-relaxed mb-6">Atendimento direto para empresas, executivos, especialistas e projetos digitais que precisam de visão estratégica, execução e velocidade.</p>
+          <a href="https://wa.me/5511966161611?text=Ola%20Guilherme%20quero%20saber%20mais%20sobre%20seus%20servicos" target="_blank" rel="noopener noreferrer" class="shimmer inline-flex items-center gap-2 bg-accent text-white font-display font-bold text-sm px-6 py-3.5 rounded-xl hover:bg-accent-light transition-colors">
+            Falar no WhatsApp
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="border-t border-zinc-100 dark:border-zinc-900">
+  <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-sm text-zinc-400">© 2025 Guilherme Miranda. Todos os direitos reservados. <br> Desenvolvido por <a href="https://lbegey78.gumroad.com/" target="_blank" rel="noopener noreferrer" class="font-bold">Laurent Begey</a> • Distribuído por <a href="https://themewagon.com/" target="_blank" rel="noopener noreferrer" class="font-bold">ThemeWagon</a></p>
+    <p class="text-xs text-zinc-500">Construído com
+      <a href="https://tailwindcss.com" rel="noopener noreferrer" target="_blank" class="hover:text-accent transition-colors">Tailwind CSS</a>
+      &
+      <a href="https://alpinejs.dev" rel="noopener noreferrer" target="_blank" class="hover:text-accent transition-colors">Alpine.js</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+function app() {
+  return {
+    dark: false,
+    mm: false,
+    sc: false,
+    s: 'hero',
+    init() {
+      this.dark = localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      this.$watch('dark', value => localStorage.setItem('theme', value ? 'dark' : 'light'));
+      window.addEventListener('scroll', () => {
+        this.sc = window.scrollY > 20;
+        this.updateSection();
+      }, { passive: true });
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+    },
+    updateSection() {
+      const atBottom = (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 60;
+      if (atBottom) {
+        this.s = 'contact';
+        return;
+      }
+      const ids = ['contact','blog','reviews','about','work','services','hero'];
+      for (const id of ids) {
+        const element = document.getElementById(id);
+        if (element && window.scrollY >= element.offsetTop - 130) {
+          this.s = id;
+          return;
+        }
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>
